@@ -1,4 +1,4 @@
-package one.digitalinnovation.collections
+package one.digitalinnovationcollections
 
 fun main() {
     fun separador() {
