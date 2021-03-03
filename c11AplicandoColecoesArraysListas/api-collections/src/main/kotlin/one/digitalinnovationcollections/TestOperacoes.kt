@@ -12,8 +12,8 @@ fun main(){
     }
     separador()
 
-    println("Maior salário: ${salarios.max()}")
-    println("Menor salário: ${salarios.min()}")
+    println("Maior salário: ${salarios.maxOrNull()}")
+    println("Menor salário: ${salarios.minOrNull()}")
     println("Media salário: ${salarios.average()}")
     separador()
 
