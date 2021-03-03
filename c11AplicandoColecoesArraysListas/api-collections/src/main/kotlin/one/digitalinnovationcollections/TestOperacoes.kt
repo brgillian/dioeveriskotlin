@@ -10,6 +10,8 @@ fun main(){
     for (salario in salarios){
         println(salario)
     }
+
+
     separador()
 
     println("Maior salário: ${salarios.maxOrNull()}")

@@ -14,6 +14,12 @@ fun main(){
     separador()
 
     println(funcionarios.find {it.nome == "Maria" })
+
+    separador()
+
+    funcionarios
+        .sortedBy { it.salario }
+        .forEach { println(it) }
 }
 
 data class Funcionario(
@@ -27,3 +33,4 @@ data class Funcionario(
             
         """.trimIndent()
 }
+
