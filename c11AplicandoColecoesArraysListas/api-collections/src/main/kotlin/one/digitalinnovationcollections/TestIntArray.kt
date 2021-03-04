@@ -1,11 +1,7 @@
-package one.digitalinnovation.collections
+package one.digitalinnovationcollections
 
 fun main(){
-    fun separador(){
-        println("----------------------------------------------")
-    }
-
-    val values = IntArray(5)    //É preciso informar o tamanho do array.
+     val values = IntArray(5)
     values[0] = 1
     values[1] = 7
     values[2] = 6
@@ -16,19 +12,19 @@ fun main(){
         println(valor)
     }
 
-    separador()
+    Separador()
 
     values.forEach { println(it) }
 
-    separador()
+    Separador()
 
     values.forEach { valor -> println(valor) }
 
-    separador()
+    Separador()
 
     for (index in values.indices){ println(values[index]) }
 
-    separador()
+    Separador()
 
     values.sort()
     for (valor in values){ println(valor) }

@@ -1,9 +1,6 @@
 package one.digitalinnovationcollections
 
 fun main(){
-    fun separador() {
-        println("----------------------------------------------")
-    }
 
     val joao = Funcionario("João", 2000.0, "CLT")
     val pedro = Funcionario("Pedro", 1500.0, "PJ")
@@ -14,12 +11,12 @@ fun main(){
 
     val resultUnion = funcionarios1.union(funcionarios2)
     resultUnion.forEach { print(it) }
-    separador()
+    Separador()
 
     val funcionarios3 = setOf(joao, pedro, maria)
     val resultSubtract = funcionarios3.subtract(funcionarios2)
     resultSubtract.forEach { print(it) }
-    separador()
+    Separador()
 
     val resultIntersect = funcionarios3.intersect(funcionarios2)
     resultIntersect.forEach { println(it) }

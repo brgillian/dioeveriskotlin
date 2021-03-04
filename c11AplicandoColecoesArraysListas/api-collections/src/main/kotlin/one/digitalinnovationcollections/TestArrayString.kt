@@ -1,9 +1,6 @@
 package one.digitalinnovationcollections
 
 fun main() {
-    fun separador() {
-        println("----------------------------------------------")
-    }
 
     val nomes = Array(3) { "" } //Poderia ser: Array <String>(3){""}
 
@@ -14,11 +11,11 @@ fun main() {
     for (nome in nomes) {
         println(nome)
     }
-    separador()
+    Separador()
 
     nomes.sort()
     nomes.forEach { println(it) }
-    separador()
+    Separador()
 
     val nomes2 = arrayOf("Maria", "Zazá", "Pedro")
     nomes2.sort()
