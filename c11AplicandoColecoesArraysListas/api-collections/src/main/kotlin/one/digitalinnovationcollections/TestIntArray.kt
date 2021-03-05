@@ -1,7 +1,7 @@
 package one.digitalinnovationcollections
 
 fun main(){
-     val values = IntArray(5)
+    val values = IntArray(5)
     values[0] = 1
     values[1] = 7
     values[2] = 6
