@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">imcapplication</string>
+    <string name="app_name">IMC</string>
+    <string name="ola_mundo">Olá, mundo!</string>
 </resources>
