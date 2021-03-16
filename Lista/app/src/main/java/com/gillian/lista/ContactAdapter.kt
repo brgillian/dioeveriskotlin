@@ -1,24 +1,30 @@
 package com.gillian.lista
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
 class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHolder>(){
 
     private val list: MutableList<Contact> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ??? {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ContactAdapterViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.contact_item,parent,false)
+        return ContactAdapterViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ???, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder:ContactAdapterViewHolder, position: Int) {
+        holder.bind(list[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+       return list.size
     }
-    class ContactAdapterViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){}
+    class ContactAdapterViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
+
+        fun bind(contact:Contact){
+
+        }
+    }
 }

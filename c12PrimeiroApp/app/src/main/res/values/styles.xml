@@ -4,5 +4,6 @@
     <style name="Botao">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/black</item>
     </style>
 </resources>
