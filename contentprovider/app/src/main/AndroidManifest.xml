@@ -13,7 +13,7 @@
             android:name=".database.NotesProvider"
             android:authorities="com.gillian.applicationcontentprovider.provider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
