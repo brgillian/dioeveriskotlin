@@ -78,7 +78,7 @@ class NotesProvider : ContentProvider() {
                 cursor
             }
             else -> {
-                throw UnsupportedOperationException("Uri nao implementada!")
+                throw UnsupportedOperationException("Uri não implementada!")
             }
         }
     }
@@ -90,7 +90,7 @@ class NotesProvider : ContentProvider() {
     ): Int {
         if(mUriMatcher.match(uri) == NOTES_BY_ID){
             val db: SQLiteDatabase = dbHelper.writableDatabase
-            val linesAffect = db.update(TABLE_NOTES, "$_ID=?", arrayOf(uri.lastPathSegment))
+            val linesAffect = db.update(TABLE_NOTES, values,"$_ID = ?", arrayOf(uri.lastPathSegment))
             db.close()
             context?.contentResolver?.notifyChange(uri, null)
             return linesAffect
