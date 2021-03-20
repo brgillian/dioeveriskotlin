@@ -5,7 +5,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.provider.BaseColumns._ID
+import com.gillian.applicationcontentprovider.database.NotesDatabaseHelper.Companion.TABLE_NOTES
+import java.lang.UnsupportedOperationException
 
 class NotesProvider : ContentProvider() {
 
@@ -24,16 +28,20 @@ class NotesProvider : ContentProvider() {
 
     // Deleta os dados do provider
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-        TODO("Implement this to handle requests to delete one or more rows")
+        if(mUriMatcher.match(uri) == NOTES_BY_ID){
+            val db: SQLiteDatabase = dbHelper.writableDatabase
+            val linesAffect = db.delete(TABLE_NOTES, "$_ID=?", arrayOf(uri.lastPathSegment))
+            db.close()
+            context?.contentResolver?.notifyChange(uri, null) // Notifica tudo o que foi alterado no bd
+            return linesAffect
+        }else{
+            throw UnsupportedOperationException("Uri inválida para exclusão!")
+        }
     }
 
     // Retorna dados de imagem, arquivos...
-    override fun getType(uri: Uri): String? {
-        TODO(
-            "Implement this to handle requests for the MIME type of the data" +
-                    "at the given URI"
-        )
-    }
+    // Não será utilizada neste projeto e por conta disso receberá tratamento de erros
+    override fun getType(uri: Uri): String? = throw UnsupportedOperationException ("Não implementada")
 
     // Insere dados na aplicação através do content privider
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
