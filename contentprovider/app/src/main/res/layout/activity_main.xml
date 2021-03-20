@@ -22,8 +22,6 @@
         android:importantForAccessibility="no"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-
-
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
