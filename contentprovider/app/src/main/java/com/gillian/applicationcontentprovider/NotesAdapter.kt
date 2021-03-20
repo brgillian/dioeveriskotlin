@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
-class NotesAdapter():RecyclerView.Adapter<NotesViewHolder>(){
+class NotesAdapter(private val listener: NoteClickedListener):RecyclerView.Adapter<NotesViewHolder>(){
 
     private var mCursor: Cursor? = null
 
