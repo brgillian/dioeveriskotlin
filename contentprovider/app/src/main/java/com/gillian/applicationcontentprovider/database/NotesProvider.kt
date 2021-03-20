@@ -45,7 +45,16 @@ class NotesProvider : ContentProvider() {
 
     // Insere dados na aplicação através do content privider
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Implement this to handle requests to insert a new row.")
+        if(mUriMatcher.match(uri) == NOTES){
+            val db: SQLiteDatabase = dbHelper.writableDatabase
+            val id:Long = db.insert(TABLE_NOTES, null, values)
+            val insertUri = Uri.withAppendedPath(BASE_URI, id.toString())
+            db.close()
+            context?.contentResolver?.notifyChange(uri, null)
+            return insertUri
+        }else{
+            throw UnsupportedOperationException("Uri inválida para inserção!")
+        }
     }
 
     // Seleciona arquivos dentro do sistema operacional, seleciona banco de dados...
