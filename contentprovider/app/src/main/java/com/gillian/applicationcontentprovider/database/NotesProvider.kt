@@ -46,4 +46,13 @@ class NotesProvider : ContentProvider() {
     ): Int {
         TODO("Implement this to handle requests to update one or more rows.")
     }
+
+    companion object{
+        // Copiar o endereço da AUTORITY do Manifest
+        // Define o endereço do provider
+        const val AUTORITY = "com.gillian.applicationcontentprovider.provider"
+
+        const val NOTES = 1
+        const val NOTES_BY_ID = 2
+    }
 }
