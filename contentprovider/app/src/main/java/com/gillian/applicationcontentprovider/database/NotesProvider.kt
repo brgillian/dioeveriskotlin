@@ -2,6 +2,7 @@ package com.gillian.applicationcontentprovider.database
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
@@ -10,11 +11,14 @@ class NotesProvider : ContentProvider() {
 
     // OnCreate() Inicia tudo. Faz a instância dos bancos de dados, URLs...
     private lateinit var mUriMatcher: UriMatcher //valida a Url de requisição do content provider
+    private  lateinit var dbHelper: NotesDatabaseHelper
     override fun onCreate(): Boolean {
         mUriMatcher = UriMatcher(UriMatcher.NO_MATCH) // instância do content privider
         // identificações do content provider
         mUriMatcher.addURI(AUTORITY, "notes", NOTES)
         mUriMatcher.addURI(AUTORITY,"notes/#", NOTES_BY_ID) // # indica que tem uma query string
+
+        if(context != null){dbHelper = NotesDatabaseHelper(context as Context)} // Esse contexto jamais poderá ser nulo para criação do BD.
         return true
     }
 
