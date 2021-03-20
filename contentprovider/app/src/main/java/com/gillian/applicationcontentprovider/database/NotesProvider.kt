@@ -59,8 +59,9 @@ class NotesProvider : ContentProvider() {
         const val AUTORITY = "com.gillian.applicationcontentprovider.provider"
         val BASE_URI = Uri.parse("content://$AUTORITY") // Requisita o content provider em qualquer app
         val URI_NOTES = Uri.withAppendedPath(BASE_URI, "notes")  //"content:com.gillian.applicationcontentprovider.provider/notes
-       
+
         const val NOTES = 1
         const val NOTES_BY_ID = 2
+
     }
 }
