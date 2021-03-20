@@ -2,10 +2,21 @@ package com.gillian.applicationcontentprovider.database
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
 class NotesProvider : ContentProvider() {
+
+    // OnCreate() Inicia tudo. Faz a instância dos bancos de dados, URLs...
+    private lateinit var mUriMatcher: UriMatcher //valida a Url de requisição do content provider
+    override fun onCreate(): Boolean {
+        mUriMatcher = UriMatcher(UriMatcher.NO_MATCH) // instância do content privider
+        // identificações do content provider
+        mUriMatcher.addURI(AUTORITY, "notes", NOTES)
+        mUriMatcher.addURI(AUTORITY,"notes/#", NOTES_BY_ID) // # indica que tem uma query string
+        return true
+    }
 
     // Deleta os dados do provider
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
@@ -23,11 +34,6 @@ class NotesProvider : ContentProvider() {
     // Insere dados na aplicação através do content privider
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         TODO("Implement this to handle requests to insert a new row.")
-    }
-
-    // Inicia tudo. Faz a instância dos bancos de dados, URLs...
-    override fun onCreate(): Boolean {
-        TODO("Implement this to initialize your content provider on startup.")
     }
 
     // Seleciona arquivos dentro do sistema operacional, seleciona banco de dados...
@@ -51,7 +57,9 @@ class NotesProvider : ContentProvider() {
         // Copiar o endereço da AUTORITY do Manifest
         // Define o endereço do provider
         const val AUTORITY = "com.gillian.applicationcontentprovider.provider"
-
+        val BASE_URI = Uri.parse("content://$AUTORITY") // Requisita o content provider em qualquer app
+        val URI_NOTES = Uri.withAppendedPath(BASE_URI, "notes")  //"content:com.gillian.applicationcontentprovider.provider/notes
+       
         const val NOTES = 1
         const val NOTES_BY_ID = 2
     }
